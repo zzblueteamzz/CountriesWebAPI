@@ -1,4 +1,4 @@
-﻿namespace Data.ViewModels
+﻿namespace Servises
 {
     public class Class1
     {
