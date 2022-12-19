@@ -1,5 +1,7 @@
-﻿using Data.Models.Models;
+﻿using Data.Models;
 using Microsoft.EntityFrameworkCore;
+using Services;
+using System.Reflection;
 
 namespace Data.Context
 {
@@ -7,10 +9,11 @@ namespace Data.Context
     {
         public CountriesContext(DbContextOptions options) : base(options)
         {
+            
         }
 
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<Region> Regions { get; set; }
-
+        
+        public DbSet<PopulationModel> PopulationModel { get; set; }
+        
     }
 }
