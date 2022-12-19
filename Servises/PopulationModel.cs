@@ -1,4 +1,4 @@
-﻿namespace CountriesWebApi
+﻿namespace Services
 {
     public class PopulationModel
     {

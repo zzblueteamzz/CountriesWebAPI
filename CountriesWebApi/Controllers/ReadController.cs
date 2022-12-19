@@ -16,6 +16,7 @@ namespace CountriesWebApi.Controllers
         {
             CountriesContext = context;
         }
+        public List<PopulationModel> PopulationModels { get; set; }
         public void ReadData()
         {
             ICsvService csvService = new CsvService();
@@ -26,8 +27,8 @@ namespace CountriesWebApi.Controllers
             
 
             var res = csvService.ReadTradesFromFile(fullDir);
-            var ss = CountriesContext.PopulationModel.ToList();
-            ss = res;
+            
+            PopulationModels = res;
         }
 
     }
