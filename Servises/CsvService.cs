@@ -26,5 +26,9 @@ namespace Services
             }
 
         }
+        public void CsvDataFilling(List<PopulationModel> record)
+        {
+            Dictionary<string, List<object>> artists = new Dictionary<string, List<object>>();
+        }
     }
 }
