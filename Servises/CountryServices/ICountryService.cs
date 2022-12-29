@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.ViewModels
+namespace Services.CountryServices
 {
-    public class CountryViewModel
-    {   
-        public string CountryName { get; set; }        
+    public interface ICountryService
+    {
     }
 }

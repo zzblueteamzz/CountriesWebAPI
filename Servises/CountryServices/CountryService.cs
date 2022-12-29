@@ -1,6 +1,6 @@
 ﻿namespace Services.CountryServices
 {
-    public class CountryService
+    public class CountryService: ICountryService
     {
 
     }
