@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Services.CountryServices
 {
-    public interface ICountryService
+    public interface ICountryService<T>
     {
+        public bool Create(T viewModel);
+        public bool Update(T viewModel);
+        public bool Delete(int id);
+
     }
 }

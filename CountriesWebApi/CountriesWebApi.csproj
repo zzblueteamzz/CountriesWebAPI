@@ -18,6 +18,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Data.Context\Data.Context.csproj" />
+    <ProjectReference Include="..\Mapper\Mapper.csproj" />
+    <ProjectReference Include="..\Servises\Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

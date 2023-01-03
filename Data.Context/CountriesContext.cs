@@ -1,7 +1,6 @@
 ﻿using Data.Models;
 using Data.Models.Models;
 using Microsoft.EntityFrameworkCore;
-using Services;
 using System.Reflection;
 
 namespace Data.Context
@@ -13,10 +12,11 @@ namespace Data.Context
             
         }
 
-        
-        public DbSet<PopulationModel> PopulationModel { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<CountryCharacteristic> CountriesCharacteristics { get; set; }
+        //public DbSet<PopulationModel> PopulationModel { get; set; }
         public DbSet<User> Users { get; set; } 
-        public DbSet<UserRole> UserRoles { get; set; }
+        //public DbSet<UserRole> UserRoles { get; set; }
         
     }
 }

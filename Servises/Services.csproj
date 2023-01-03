@@ -7,11 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="CsvHelper" Version="30.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Data.Context\Data.Context.csproj" />
     <ProjectReference Include="..\Data.Models\Data.Models.csproj" />
+    <ProjectReference Include="..\Data.ViewModels\Data.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

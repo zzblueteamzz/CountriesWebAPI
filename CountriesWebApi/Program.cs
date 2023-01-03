@@ -1,6 +1,10 @@
+using AutoMapper;
 using Data.Context;
+using Data.ViewModels;
+using Mapper;
 using Microsoft.EntityFrameworkCore;
 using Services;
+using Services.CountryServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +18,13 @@ builder.Services.AddDbContext<CountriesContext>(
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ICsvService,CsvService>();
-
+builder.Services.AddTransient<ICountryService<CountryViewModel>,CountryService>();
+var config = new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new MapperProfile());
+});
+var mapper = config.CreateMapper();
+builder.Services.AddSingleton(mapper);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

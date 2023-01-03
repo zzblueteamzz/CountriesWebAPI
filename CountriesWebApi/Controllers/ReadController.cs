@@ -17,6 +17,7 @@ namespace CountriesWebApi.Controllers
             CountriesContext = context;
         }
         public List<PopulationModel> PopulationModels { get; set; }
+        [HttpPost]
         public void ReadData()
         {
             ICsvService csvService = new CsvService();
