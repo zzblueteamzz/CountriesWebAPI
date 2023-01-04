@@ -4,6 +4,7 @@ using Data.ViewModels;
 using Mapper;
 using Microsoft.EntityFrameworkCore;
 using Services;
+using Services.CountryCharacteristicServices;
 using Services.CountryServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ICsvService,CsvService>();
 builder.Services.AddTransient<ICountryService<CountryViewModel>,CountryService>();
+builder.Services.AddTransient<ICountryCharacteristicService<CountryCharacteristicViewModel>,CountryCharacteristicService>();
 var config = new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new MapperProfile());
