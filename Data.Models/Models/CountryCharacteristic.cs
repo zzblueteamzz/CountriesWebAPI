@@ -13,10 +13,11 @@ namespace Data.Models.Models
 
         public int NetChange { get; set; }
         public int Density { get; set; }
-        public int LandArea { get; set; }
-        public double FertRate { get; set; }
-        public int MedAge { get; set; }
-        public string UrbanPop { get; set; }
-        public string WorldShare { get; set; }
+        public int? LandArea { get; set; }
+        public double? FertRate { get; set; }
+        public int? MedAge { get; set; }
+        public string? WorldShare { get; set; }
+        public int CountryId { get; set; }
+        public Country Country { get; set; }
     }
 }

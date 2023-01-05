@@ -10,5 +10,6 @@ namespace Services
     public interface ICsvService
     {
         public List<PopulationModel> ReadTradesFromFile(string filename);
+        public Task CsvDataFilling(List<PopulationModel> countries);
     }
 }

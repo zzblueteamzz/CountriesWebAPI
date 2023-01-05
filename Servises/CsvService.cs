@@ -1,5 +1,7 @@
 ﻿using CsvHelper;
+using Data.Context;
 using Data.Models;
+using Data.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
@@ -10,8 +12,14 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class CsvService:ICsvService
+    public class CsvService : ICsvService
     {
+        public readonly CountriesContext _countriesContext;
+        public CsvService(CountriesContext countriesContext)
+        {
+            _countriesContext = countriesContext;
+        }
+
         public List<PopulationModel> ReadTradesFromFile(string filename)
         {
             if (string.IsNullOrEmpty(filename))
@@ -26,9 +34,34 @@ namespace Services
             }
 
         }
-        public void CsvDataFilling(List<PopulationModel> record)
+        public async Task CsvDataFilling(List<PopulationModel> countries)
         {
-            Dictionary<string, List<object>> artists = new Dictionary<string, List<object>>();
+            foreach (PopulationModel country in countries)
+            {
+                Country newCountry = new Country() { CountryName = country.CountryName };
+                await _countriesContext.AddAsync(newCountry);
+            }
+            await _countriesContext.SaveChangesAsync();
+            foreach (PopulationModel country in countries)
+            {
+                int idCountry = _countriesContext.Countries.Where(p=>p.CountryName==country.CountryName).FirstOrDefault().Id;
+                CountryCharacteristic newCountryCharacteristic = new CountryCharacteristic()
+                {
+                    Population = country.Population,
+                    YearlyChange = country.YearlyChange,
+                    NetChange = country.NetChange,
+                    Density = country.Density,
+                    LandArea = country.LandArea,
+                    FertRate = country.FertRate,
+                    MedAge = country.MedAge,
+                    WorldShare = country.WorldShare,
+                    CountryId=idCountry,
+                    
+
+                };
+                await _countriesContext.AddAsync(newCountryCharacteristic);
+            }
+            await _countriesContext.SaveChangesAsync();
         }
     }
 }

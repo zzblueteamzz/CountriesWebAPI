@@ -21,6 +21,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ICsvService,CsvService>();
 builder.Services.AddTransient<ICountryService<CountryViewModel>,CountryService>();
 builder.Services.AddTransient<ICountryCharacteristicService<CountryCharacteristicViewModel>,CountryCharacteristicService>();
+
 var config = new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new MapperProfile());
