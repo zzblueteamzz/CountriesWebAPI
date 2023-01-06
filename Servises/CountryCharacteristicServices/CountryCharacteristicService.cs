@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Data.Context;
 using Data.Models.Models;
 using Data.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,12 @@ namespace Services.CountryCharacteristicServices
         {
             this.countriesContext = countriesContext;
             this.mapper = mapper;
+        }
+        public List<CountryCharacteristic>  GetAll()
+        {
+            List<CountryCharacteristic> result = new List<CountryCharacteristic>();
+            return result;
+           
         }
         public bool Create(CountryCharacteristicViewModel viewModel)
         {

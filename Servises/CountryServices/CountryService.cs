@@ -43,7 +43,16 @@ namespace Services.CountryServices
         }
         public bool Delete(int id)
         {
-            var country =  countriesContext.Countries.Find(id);
+            Country? country =  countriesContext.Countries.Find(id);
+            if (country == null)
+            {
+                return false;
+            }
+            CountryCharacteristic? countryCharacteristic=countriesContext.CountriesCharacteristics.Where(p=>p.CountryId==id).FirstOrDefault();
+            if (countryCharacteristic!=null)
+            {
+                countriesContext.Remove(countryCharacteristic);
+            }
             countriesContext.Countries.Remove(country);
              countriesContext.SaveChanges();
             return true;
