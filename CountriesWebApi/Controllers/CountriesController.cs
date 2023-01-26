@@ -22,9 +22,9 @@ namespace CountriesWebApi.Controllers
             
         }
         [HttpPut]
-        public bool Update(CountryViewModel countryViewModel)
+        public bool Update(CountryViewModel countryViewModel, string name)
         {
-            return countryService.Update(countryViewModel);
+            return countryService.Update(countryViewModel, name);
         }
         [HttpDelete]
         public bool Delete(int id)

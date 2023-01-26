@@ -1,3 +1,4 @@
+using Authoriz;
 using AutoMapper;
 using Data.Context;
 using Data.ViewModels;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Services;
 using Services.CountryCharacteristicServices;
 using Services.CountryServices;
+using Services.UserServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,8 @@ builder.Services.AddDbContext<CountriesContext>(
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IJwtUtils, JwtUtils>();
+builder.Services.AddScoped<IUserService, UserService>(); 
 builder.Services.AddTransient<ICsvService,CsvService>();
 builder.Services.AddTransient<ICountryService<CountryViewModel>,CountryService>();
 builder.Services.AddTransient<ICountryCharacteristicService<CountryCharacteristicViewModel>,CountryCharacteristicService>();

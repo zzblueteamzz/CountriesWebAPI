@@ -10,7 +10,7 @@ namespace Services.CountryServices
     {
       
         public bool Create(T viewModel);
-        public bool Update(T viewModel);
+        public bool Update(T viewModel, string name);
         public bool Delete(int id);
 
     }

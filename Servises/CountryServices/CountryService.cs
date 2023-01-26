@@ -34,11 +34,16 @@ namespace Services.CountryServices
            
             
         }
-        public bool Update(CountryViewModel viewModel)
+        public bool Update(CountryViewModel viewModel,string name)
         {
-            var country = mapper.Map<Country>(viewModel);
-            countriesContext.Update(country);
-             countriesContext.SaveChanges();
+            Country? country = countriesContext.Countries.Where(c => c.CountryName == name).FirstOrDefault();
+            if(country == null)
+            {
+                return false;
+            }
+
+            country.CountryName = viewModel.CountryName;
+            countriesContext.SaveChanges();
             return true;
         }
         public bool Delete(int id)

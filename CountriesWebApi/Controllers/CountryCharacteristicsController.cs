@@ -1,4 +1,5 @@
-﻿using Data.ViewModels;
+﻿using Data.Models.Models;
+using Data.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services.CountryCharacteristicServices;
@@ -15,17 +16,26 @@ namespace CountriesWebApi.Controllers
         {
             this.countryCharacteristicService = countryCharacteristicService;
         }
+        [HttpGet]
+        public List<CountryCharacteristicViewModel> GetAll()
+        {
+            return countryCharacteristicService.GetAll();
+        }
         [HttpPost]
         public bool Create(CountryCharacteristicViewModel countryCharacteristicViewModel)
         {
             return countryCharacteristicService.Create(countryCharacteristicViewModel);
 
         }
+        [HttpPut]
+        public bool Update(CountryCharacteristicViewModel countryCharacteristicViewModel, string name)
+        {
+            return countryCharacteristicService.Update(countryCharacteristicViewModel, name);
+        }
         [HttpDelete]
         public bool Delete(int id)
         {
             return countryCharacteristicService.Delete(id);
-
         }
     }
 }
