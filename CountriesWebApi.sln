@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TEstServices", "TEstService
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityViewModel", "IdentityViewModel\IdentityViewModel.csproj", "{A7F4E983-2452-4BAC-9C47-12DE2F1A91C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authoriz", "Authoriz\Authoriz.csproj", "{12A5600C-0395-4CC2-8F16-1CB3C9A87F8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authoriz", "Authoriz\Authoriz.csproj", "{12A5600C-0395-4CC2-8F16-1CB3C9A87F8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

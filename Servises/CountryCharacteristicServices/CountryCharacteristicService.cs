@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,12 +39,21 @@ namespace Services.CountryCharacteristicServices
         {
 
             Country? country = countriesContext.Countries.Where(p => p.CountryName == viewModel.Country).FirstOrDefault();
-            var countryChara = mapper.Map<CountryCharacteristic>(viewModel);
+            CountryCharacteristic? characteristic = new CountryCharacteristic();
+           
             
+           
             if (country != null)
             {
-                countryChara.CountryId = country.Id;
-                countriesContext.Add(countryChara);
+                characteristic.CountryId = country.Id;
+                characteristic.YearlyChange = viewModel.YearlyChange;
+                characteristic.NetChange = viewModel.NetChange;
+                characteristic.Density = viewModel.Density;
+                characteristic.LandArea = viewModel.LandArea;
+                characteristic.FertRate = viewModel.FertRate;
+                characteristic.MedAge = viewModel.MedAge;
+                characteristic.WorldShare = viewModel.WorldShare;
+                countriesContext.Add(characteristic);
                 countriesContext.SaveChanges();
                 return true;
             }

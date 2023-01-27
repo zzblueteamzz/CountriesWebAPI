@@ -4,7 +4,7 @@
 
 namespace Data.Context.Migrations
 {
-    public partial class Initial : Migration
+    public partial class INitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

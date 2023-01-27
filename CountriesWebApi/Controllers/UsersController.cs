@@ -40,6 +40,7 @@ namespace CountriesWebApi.Controllers
             return Ok(new { message = "Registration successful" });
         }
         [HttpGet]
+        [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public IActionResult GetAll()
         {
             var users = _userService.GetAll();
@@ -47,6 +48,7 @@ namespace CountriesWebApi.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public IActionResult Update(int id, UpdateRequest model)
         {
             User? user = _userService.GetById(id);
@@ -60,6 +62,7 @@ namespace CountriesWebApi.Controllers
 
 
         [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             User? user = _userService.GetById(id);

@@ -1,14 +1,17 @@
 ﻿using Data.Context;
 using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services;
+using System.Data;
 using System.Reflection;
 
 namespace CountriesWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
     public class ReadController : ControllerBase
     {
         public readonly ICsvService _csvService;
@@ -37,6 +40,7 @@ namespace CountriesWebApi.Controllers
 
         //    PopulationModels = res;
         //}
+
         [HttpGet]
         public Task ReadData()
         {

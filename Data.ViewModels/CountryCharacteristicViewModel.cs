@@ -3,6 +3,7 @@
     public class CountryCharacteristicViewModel
     {
         public string Country { get; set; }
+       
         public int Population { get; set; }
         public string YearlyChange { get; set; }
 

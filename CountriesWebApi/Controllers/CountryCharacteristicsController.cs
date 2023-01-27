@@ -1,9 +1,11 @@
 ﻿using Data.Models.Models;
 using Data.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services.CountryCharacteristicServices;
 using Services.CountryServices;
+using System.Data;
 
 namespace CountriesWebApi.Controllers
 {
@@ -21,17 +23,20 @@ namespace CountriesWebApi.Controllers
         {
             return countryCharacteristicService.GetAll();
         }
+        [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Roles = "User,Admin")]
         [HttpPost]
         public bool Create(CountryCharacteristicViewModel countryCharacteristicViewModel)
         {
             return countryCharacteristicService.Create(countryCharacteristicViewModel);
 
         }
+        [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Roles = "User,Admin")]
         [HttpPut]
         public bool Update(CountryCharacteristicViewModel countryCharacteristicViewModel, string name)
         {
             return countryCharacteristicService.Update(countryCharacteristicViewModel, name);
         }
+        [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         [HttpDelete]
         public bool Delete(int id)
         {
